@@ -1,1 +1,3 @@
-# Software Paradigmen - Design Pattern
+# SWP
+
+Software Paradigmen - FH Technikum
