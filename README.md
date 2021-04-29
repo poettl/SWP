@@ -1,1 +1,1 @@
-# swp-designpattern
+# Software Paradigmen - Design Pattern
