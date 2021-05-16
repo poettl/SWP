@@ -1,0 +1,26 @@
+[
+  {
+    "type": "Longsword",
+    "weight": 10,
+    "length": 3,
+    "hitpoints": 100,
+    "material": "steel",
+    "color": "black"
+  },
+  {
+    "type": "Shortswort",
+    "weight": 7,
+    "length": 2,
+    "hitpoints": 60,
+    "material": "steel",
+    "color": "silver"
+  },
+  {
+    "type": "Knife",
+    "weight": 3,
+    "length": 1,
+    "hitpoints": 30,
+    "material": "iron",
+    "color": "grey"
+  }
+]
