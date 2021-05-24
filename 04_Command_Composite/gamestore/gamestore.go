@@ -1,12 +1,14 @@
 package gamestore
 
 type Game struct {
+	bought        bool
 	hasAvaiable   IState
 	hasBought     IState
 	hasInstall    IState
 	isBeingPlayed IState
-
-	currentState IState
+	hasBorrowed   IState
+	hasLend       IState
+	currentState  IState
 }
 
 func NewGame() *Game {
@@ -24,11 +26,21 @@ func NewGame() *Game {
 		game: g,
 	}
 
+	hasBorrowedState := &HasBorrowedState{
+		game: g,
+	}
+
+	hasLendState := &HasLendState{
+		game: g,
+	}
+
 	g.SetState(hasAvaiableState)
 	g.hasAvaiable = hasAvaiableState
 	g.hasBought = hasBoughtState
 	g.hasInstall = hasInstalledState
 	g.isBeingPlayed = isBeingPlayedState
+	g.hasBorrowed = hasBorrowedState
+	g.hasLend = hasLendState
 	return g
 }
 
@@ -43,41 +55,80 @@ func (v *Game) BuyGame() {
 }
 
 func (v *Game) InstallGame() {
-	buyCommand := &installCommand{
+	installCommand := &installCommand{
 		game: v.currentState,
 	}
 	execute := &execute{
-		command: buyCommand,
+		command: installCommand,
 	}
 	execute.exec()
 }
 
 func (v *Game) PlayGame() {
-	buyCommand := &playCommand{
+	playCommand := &playCommand{
 		game: v.currentState,
 	}
 	execute := &execute{
-		command: buyCommand,
+		command: playCommand,
 	}
 	execute.exec()
 }
 
 func (v *Game) StopGame() {
-	buyCommand := &stopCommand{
+	stopCommand := &stopCommand{
 		game: v.currentState,
 	}
 	execute := &execute{
-		command: buyCommand,
+		command: stopCommand,
 	}
 	execute.exec()
 }
 
 func (v *Game) UninstallGame() {
-	buyCommand := &uninstallCommand{
+	uninstallCommand := &uninstallCommand{
 		game: v.currentState,
 	}
 	execute := &execute{
-		command: buyCommand,
+		command: uninstallCommand,
+	}
+	execute.exec()
+}
+
+func (v *Game) BorrowGame() {
+	borrowCommand := &borrowCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: borrowCommand,
+	}
+	execute.exec()
+}
+func (v *Game) LendGame() {
+	lendCommand := &lendCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: lendCommand,
+	}
+	execute.exec()
+}
+
+func (v *Game) ReclaimGame() {
+	reclaimCommand := &reclaimCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: reclaimCommand,
+	}
+	execute.exec()
+}
+
+func (v *Game) ReturnGame() {
+	returnCommand := &returnCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: returnCommand,
 	}
 	execute.exec()
 }

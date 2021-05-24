@@ -6,4 +6,8 @@ type IState interface {
 	playGame()
 	stopGame()
 	uninstallGame()
+	borrowGame()
+	lendGame()
+	reclaimGame()
+	returnGame()
 }

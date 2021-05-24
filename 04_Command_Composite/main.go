@@ -21,6 +21,10 @@ func main() {
 	fmt.Println("play")
 	fmt.Println("stop")
 	fmt.Println("uninstall")
+	fmt.Println("borrow")
+	fmt.Println("lend")
+	fmt.Println("reclaim")
+	fmt.Println("return")
 	fmt.Println("exit")
 	fmt.Println()
 
@@ -43,6 +47,18 @@ func main() {
 		}
 		if strings.Compare("uninstall", text) == 0 {
 			gamestore.UninstallGame()
+		}
+		if strings.Compare("borrow", text) == 0 {
+			gamestore.BorrowGame()
+		}
+		if strings.Compare("lend", text) == 0 {
+			gamestore.LendGame()
+		}
+		if strings.Compare("reclaim", text) == 0 {
+			gamestore.ReclaimGame()
+		}
+		if strings.Compare("return", text) == 0 {
+			gamestore.ReturnGame()
 		}
 		if strings.Compare("exit", text) == 0 {
 			break

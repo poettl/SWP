@@ -27,9 +27,42 @@ func (i *HasInstallState) stopGame() {
 }
 
 func (i *HasInstallState) uninstallGame() {
-	hasBoughtState := &HasBoughtState{
+	if i.game.bought {
+		hasBoughtState := &HasBoughtState{
+			game: i.game,
+		}
+		i.game.SetState(hasBoughtState)
+	} else {
+		hasBorrowedState := &HasBorrowedState{
+			game: i.game,
+		}
+		i.game.SetState(hasBorrowedState)
+	}
+
+	fmt.Println("Uninstall succesful!")
+
+}
+
+func (i *HasInstallState) borrowGame() {
+	fmt.Println("You already own this game!")
+}
+
+func (i *HasInstallState) lendGame() {
+	hasLendState := &HasLendState{
 		game: i.game,
 	}
-	i.game.SetState(hasBoughtState)
-	fmt.Println("Uninstall succesful!")
+	i.game.SetState(hasLendState)
+	fmt.Println("You lend this game!")
+}
+
+func (i *HasInstallState) reclaimGame() {
+	fmt.Println("You don't lend this game!")
+}
+
+func (i *HasInstallState) returnGame() {
+	if i.game.bought {
+		fmt.Println("You own this game")
+	} else {
+		fmt.Println("Please uninstall to return the game")
+	}
 }

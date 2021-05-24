@@ -31,6 +31,20 @@ type stopCommand struct {
 type uninstallCommand struct {
 	game IState
 }
+type borrowCommand struct {
+	game IState
+}
+
+type lendCommand struct {
+	game IState
+}
+
+type reclaimCommand struct {
+	game IState
+}
+type returnCommand struct {
+	game IState
+}
 
 func (c *buyCommand) execute() {
 	c.game.buyGame()
@@ -44,10 +58,26 @@ func (c *installCommand) execute() {
 	c.game.installGame()
 }
 
+func (c *uninstallCommand) execute() {
+	c.game.uninstallGame()
+}
+
 func (c *stopCommand) execute() {
 	c.game.stopGame()
 }
 
-func (c *uninstallCommand) execute() {
-	c.game.uninstallGame()
+func (c *borrowCommand) execute() {
+	c.game.borrowGame()
+}
+
+func (c *lendCommand) execute() {
+	c.game.lendGame()
+}
+
+func (c *reclaimCommand) execute() {
+	c.game.reclaimGame()
+}
+
+func (c *returnCommand) execute() {
+	c.game.returnGame()
 }
