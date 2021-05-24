@@ -94,7 +94,6 @@ The dependency inversion principle ensures that classes should not depend on sol
  ``Clients should not be forced to depend upon interfaces that they do not use.''\newline
 \end{center} 
 
-Im Prinzip kann man das ISP so zusammenfassen: Verwende immer nur die kleinstmögliche Schnittstelle zu deinen Abhängigkeiten. Je mehr Funktionen eine Komponente an ihren Abhängigkeiten aufrufen kann, desto abhängiger wird sie von ihr. Wenn sich diese Funktionen nämlich ändern (z.B. die Signatur einer Methode), muss die nutzende Komponente neu kompiliert werden. Außerdem können Funktionen aufgerufen werden, die die nutzende Komponente weder benötigt, noch anwenden soll, z.B. die clear()-Methode einer Liste, die sie eigentlich nur durchlaufen soll. Zuletzt müssen auch implementierende Klassen von zu großen Interfaces für sie unnötige Methoden implementieren, nur um der Schnittstelle zu entsprechen.
 
 
 
@@ -108,7 +107,6 @@ interface Bird {
   fly(): void;
   walk(): void;
 }
-
 class Duck extends Bird{
     fly(){
         // Duck can fly
@@ -117,7 +115,6 @@ class Duck extends Bird{
         // Duck can walk
     }
 }
-
 class Ostrich extends Bird{
     fly(){
         // Ostrich cant fly... throw some error
@@ -126,22 +123,20 @@ class Ostrich extends Bird{
         // Ostrich can walk
     }
 }
-
 \end{minted}
 \caption{initial scenario}
 \end{listing}
 
+In the first example the Osterich class is forced to use the fly method. It is a clear violation of the Interface Segregation Principle. As you can see in the second example, the fly and walk methods were separated into an extra interface. With this implementation it is possible to use the fly and walk method at the Duck class and the walk method at the Ostrich class. Now no class is forced to implement an unused method. \newpage
 
 \begin{listing}[htbp]
 \begin{minted}{java}
 interface BirdFly{
     fly(): void;
 }
-
 interface BirdWalk{
     walk(): void;
 }
-
 class Duck extends BirdFly, BirdWalk{
     fly(){
         // Duck can fly
@@ -150,15 +145,13 @@ class Duck extends BirdFly, BirdWalk{
         // Duck can walk
     }
 }
-
 class Ostrich extends BirdWalk{
     walk(){
         // Ostrich can walk
     }
-} 
-
+}
 \end{minted}
-\caption{ISP}
+\caption{ISP Implementation}
 \end{listing}
 
 
@@ -170,15 +163,10 @@ class Ostrich extends BirdWalk{
 
 \listoffigures
 \clearpage
-
-\phantomsection
-\addcontentsline{toc}{chapter}{\listacroname}
-\chapter*{\listacroname}
-\begin{acronym}[XXXXX]
-	\acro{aaa}[aaa]{allaboutapps}
-\end{acronym}
-
+\listoflistings
 %Fix for fhtw_cover
 \includegraphics[width=0\linewidth]{PICs/fhtw_cover}
+\clearpage
+
 
 \end{document}
