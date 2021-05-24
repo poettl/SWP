@@ -1,3 +1,3 @@
-module swp/state
+module swp/command
 
 go 1.16

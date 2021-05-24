@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"swp/state/gamestore"
+	"swp/command/gamestore"
 )
 
 func main() {

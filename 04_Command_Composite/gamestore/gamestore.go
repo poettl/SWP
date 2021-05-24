@@ -33,23 +33,53 @@ func NewGame() *Game {
 }
 
 func (v *Game) BuyGame() {
-	v.currentState.buyGame()
+	buyCommand := &buyCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: buyCommand,
+	}
+	execute.exec()
 }
 
 func (v *Game) InstallGame() {
-	v.currentState.installGame()
+	buyCommand := &installCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: buyCommand,
+	}
+	execute.exec()
 }
 
 func (v *Game) PlayGame() {
-	v.currentState.playGame()
+	buyCommand := &playCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: buyCommand,
+	}
+	execute.exec()
 }
 
 func (v *Game) StopGame() {
-	v.currentState.stopGame()
+	buyCommand := &stopCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: buyCommand,
+	}
+	execute.exec()
 }
 
 func (v *Game) UninstallGame() {
-	v.currentState.uninstallGame()
+	buyCommand := &uninstallCommand{
+		game: v.currentState,
+	}
+	execute := &execute{
+		command: buyCommand,
+	}
+	execute.exec()
 }
 
 func (v *Game) SetState(s IState) {
