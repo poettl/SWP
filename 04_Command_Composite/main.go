@@ -25,6 +25,7 @@ func main() {
 	fmt.Println("lend")
 	fmt.Println("reclaim")
 	fmt.Println("return")
+	fmt.Println("1-Click-Play")
 	fmt.Println("exit")
 	fmt.Println()
 
@@ -59,6 +60,9 @@ func main() {
 		}
 		if strings.Compare("return", text) == 0 {
 			gamestore.ReturnGame()
+		}
+		if strings.Compare("1-Click-Play", text) == 0 {
+			gamestore.OneClickPlay()
 		}
 		if strings.Compare("exit", text) == 0 {
 			break

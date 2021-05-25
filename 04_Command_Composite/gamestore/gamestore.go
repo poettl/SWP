@@ -45,94 +45,131 @@ func NewGame() *Game {
 }
 
 func (v *Game) BuyGame() {
-	buyCommand := &buyCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: buyCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "buy")
+	executable.exec()
 }
 
 func (v *Game) InstallGame() {
-	installCommand := &installCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: installCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "install")
+	executable.exec()
 }
 
 func (v *Game) PlayGame() {
-	playCommand := &playCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: playCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "play")
+	executable.exec()
 }
 
 func (v *Game) StopGame() {
-	stopCommand := &stopCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: stopCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "stop")
+	executable.exec()
 }
 
 func (v *Game) UninstallGame() {
-	uninstallCommand := &uninstallCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: uninstallCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "uninstall")
+	executable.exec()
 }
 
 func (v *Game) BorrowGame() {
-	borrowCommand := &borrowCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: borrowCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "borrow")
+	executable.exec()
 }
 func (v *Game) LendGame() {
-	lendCommand := &lendCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: lendCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "lend")
+	executable.exec()
 }
 
 func (v *Game) ReclaimGame() {
-	reclaimCommand := &reclaimCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: reclaimCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "reclaim")
+	executable.exec()
 }
 
 func (v *Game) ReturnGame() {
-	returnCommand := &returnCommand{
-		game: v.currentState,
-	}
-	execute := &execute{
-		command: returnCommand,
-	}
-	execute.exec()
+	executable := getExecutable(v.currentState, "return")
+	executable.exec()
+}
+
+func (v *Game) OneClickPlay() {
+	commands := []string{"buy", "install", "play"}
+	executeList(commands, v)
 }
 
 func (v *Game) SetState(s IState) {
 	v.currentState = s
+}
+
+func executeList(commands []string, v *Game) {
+	for _, execString := range commands {
+		executable := getExecutable(v.currentState, execString)
+		executable.exec()
+	}
+}
+
+func getExecutable(game IState, mode string) execute {
+	var genExecute execute
+	switch mode {
+	case "buy":
+		buyCommand := &buyCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: buyCommand,
+		}
+	case "install":
+		installCommand := &installCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: installCommand,
+		}
+	case "play":
+		playCommand := &playCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: playCommand,
+		}
+	case "stop":
+		stopCommand := &stopCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: stopCommand,
+		}
+	case "uninstall":
+		uninstallCommand := &uninstallCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: uninstallCommand,
+		}
+	case "borrow":
+		borrowCommand := &borrowCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: borrowCommand,
+		}
+	case "lend":
+		lendCommand := &lendCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: lendCommand,
+		}
+	case "reclaim":
+		reclaimCommand := &reclaimCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: reclaimCommand,
+		}
+	case "return":
+		returnCommand := &returnCommand{
+			game: game,
+		}
+		genExecute = execute{
+			command: returnCommand,
+		}
+	}
+	return genExecute
 }
