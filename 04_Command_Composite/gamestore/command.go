@@ -8,6 +8,13 @@ func (b *execute) exec() {
 	b.command.execute()
 }
 
+func execList(commands []string, v *Game) {
+	for _, execString := range commands {
+		executable := getExecutable(v.currentState, execString)
+		executable.exec()
+	}
+}
+
 type command interface {
 	execute()
 }

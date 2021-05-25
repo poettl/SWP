@@ -90,18 +90,11 @@ func (v *Game) ReturnGame() {
 
 func (v *Game) OneClickPlay() {
 	commands := []string{"buy", "install", "play"}
-	executeList(commands, v)
+	execList(commands, v)
 }
 
 func (v *Game) SetState(s IState) {
 	v.currentState = s
-}
-
-func executeList(commands []string, v *Game) {
-	for _, execString := range commands {
-		executable := getExecutable(v.currentState, execString)
-		executable.exec()
-	}
 }
 
 func getExecutable(game IState, mode string) execute {
