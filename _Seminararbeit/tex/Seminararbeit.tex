@@ -35,52 +35,26 @@ These principles establish practices that lend to developing software with consi
 
 \section{S - Single Responsiblity Principle}
 
-The single responsibility principle states that a class should have only a single reason to change throughout its lifetime. This principle ensures that a class exists only for a single reason but can have multiple methods to carry out distinct functions.
+The single responsibility principle states that a class should have only a single reason to change throughout its lifetime. This principle ensures that a class exists only for a single reason but can have multiple methods to carry out distinct functions.\cite{IntroductionSOLID}
 
 \section{O - Open Close Principle}
 
 
-This principle states that objects should be open for extension but closed for modification. The open and close principle ensures our code is easily extensible without editing or rewriting the existing codebase. Designing software applications using this principle ensures extensibility and the reusability of objects.
+This principle states that objects should be open for extension but closed for modification. The open and close principle ensures our code is easily extensible without editing or rewriting the existing codebase. Designing software applications using this principle ensures extensibility and the reusability of objects.\cite{IntroductionSOLID}
 
 \section{L - Liskov Substitution Principle}
 
-This principle illustrates that if a section of your code is extending a superclass, then all subclasses of the superclass should be able to replace the superclass in your code. A section of your code does not have to know which class it is as far as it is a superclass subclass. The application of this principle ensures the easy integration of classes.
-
+This principle illustrates that if a section of your code is extending a superclass, then all subclasses of the superclass should be able to replace the superclass in your code. A section of your code does not have to know which class it is as far as it is a superclass subclass. The application of this principle ensures the easy integration of classes.\cite{IntroductionSOLID}
 \section{I - Interface Segregation Principle}
 
-The I  in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.
+The I in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them. \cite{ISP}
 
 \section{D - Dependency Inversion Principle}
 
-The dependency inversion principle ensures that classes should not depend on solid classes but should only depend on abstraction. By following this approach, it makes the interchanging of modules and classes or services simple. The dependency inversion principle makes changing dependencies easier.
+The dependency inversion principle ensures that classes should not depend on solid classes but should only depend on abstraction. By following this approach, it makes the interchanging of modules and classes or services simple. The dependency inversion principle makes changing dependencies easier.\cite{IntroductionSOLID}
 
-
-
-%\begin{listing}[htbp]
-%\begin{minted}{go}
-%func main() {
-%	gamestore := gamestore.NewGame()
-%	reader := bufio.NewReader(os.Stdin)
-%	for {
-%		fmt.Print("-> ")
-%		text, _ := reader.ReadString('\n')
-%		text = strings.Replace(text, "\n", "", -1)
-%
-%		if strings.Compare("buy", text) == 0 {
-%			gamestore.BuyGame()
-%		}
-%		if strings.Compare("install", text) == 0 {
-%			gamestore.InstallGame()
-%		}
-%	}
-%}
-%
-%\end{minted}
-%\caption{Go Example}
-%\end{listing}
 
 \chapter{Interface segregation principle}
-
 
 \begin{figure}[!htbp]
 \centering
@@ -89,17 +63,36 @@ The dependency inversion principle ensures that classes should not depend on sol
 \end{figure}
 
 
+\section{Interface}
+
+An interface is a description of the actions that an object can do. In Object Oriented Programming, an Interface is a description of all functions that an object must have in order to be an "X". Again, as an example, anything that "ACTS LIKE" a light, should have a turnOn() method and a turnOff() method. The purpose of interfaces is to allow the computer to enforce these properties and to know that an object of TYPE T must have functions called X,Y,Z, etc. \cite{utah}
+
+
+\section{ISP}
 
 \begin{center} 
  ``Clients should not be forced to depend upon interfaces that they do not use.''\newline
 \end{center} 
 
+This principle was developed by Robert C. Martin while working at Xerox as a consultant. Martin was in charge of developing a new printing management system that could carry out tasks concurrently, which was new by the time.\cite{solidISP}
+
+While developing this new printing system, Martin noticed that small changes in the design caused large-scale deployments. In some same cases caused deployments on modules out of the scope of the change. The problem was mainly caused by a large fat interface used throughout all the modules of the system.\cite{solidISP}
+
+This principle is simple and clear, interfaces should not be forced to implement methods that they do not use. It has the main goal of limiting the scope of future changes. However, it is very difficult, in the first iterations, to identify the critical parts of your solution that will violate the principle. So, my advice is to wait for your code to evolve, so you can identify where you can apply it. Don't try to guess future requirements because there is a chance that you make your code more complicated.\cite{solidISP}
 
 
+\section{Problem with will be solved with the ISP}
+
+Deliver big fat interface that forces the client to implement a method that is not required.
+The client ends up implementing a usefulness method, in other words a method that has no meaning to the client. This decreases the readability of the code and also confuses the developer using the client code.
+The client interface ends up violating SRP sometime since it might perform some action that is not related to it.\cite{csharpsolid}
+
+
+\newpage
 
 \chapter{Practical Example}
 
-
+In the first example the Osterich class is forced to use the fly method. It is a clear violation of the Interface Segregation Principle. As you can see in the second example, the fly and walk methods were separated into an extra interface. With this implementation it is possible to use the fly and walk method at the Duck class and the walk method at the Ostrich class. Now no class is forced to implement an unused method. \newline
 
 \begin{listing}[htbp]
 \begin{minted}{java}
@@ -127,7 +120,8 @@ class Ostrich extends Bird{
 \caption{initial scenario}
 \end{listing}
 
-In the first example the Osterich class is forced to use the fly method. It is a clear violation of the Interface Segregation Principle. As you can see in the second example, the fly and walk methods were separated into an extra interface. With this implementation it is possible to use the fly and walk method at the Duck class and the walk method at the Ostrich class. Now no class is forced to implement an unused method. \newpage
+\newpage
+
 
 \begin{listing}[htbp]
 \begin{minted}{java}
