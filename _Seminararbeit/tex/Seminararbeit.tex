@@ -29,7 +29,7 @@
 \maketitle
 \chapter{SOLID principles}
 
-These principles establish practices that lend to developing software with considerations for maintaining and extending as the project grows. Adopting these practices can also contribute to avoiding code smells, refactoring code, and Agile or Adaptive software development. \cite{SOLID}
+These principles describe practices for a software development with considerations for maintaining and extending as the project grows. Adopting these practices can also contribute to avoiding code smells, refactoring code, and Agile or Adaptive software development. \cite{SOLID}
 
 
 
@@ -47,7 +47,7 @@ This principle states that objects should be open for extension but closed for m
 This principle illustrates that if a section of your code is extending a superclass, then all subclasses of the superclass should be able to replace the superclass in your code. A section of your code does not have to know which class it is as far as it is a superclass subclass. The application of this principle ensures the easy integration of classes.\cite{IntroductionSOLID}
 \section{I - Interface Segregation Principle}
 
-The I in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them. \cite{ISP}
+The I in SOLID stands for interface segregation, and it simply means that larger interfaces should be split into smaller ones. This ensure that implementing classes only need to be concerned about the methods that are of interest and necessary. \cite{ISP}
 
 \section{D - Dependency Inversion Principle}
 
@@ -65,13 +65,13 @@ The dependency inversion principle ensures that classes should not depend on sol
 
 \section{Interface}
 
-An interface is a description of the actions that an object can do. In Object Oriented Programming, an Interface is a description of all functions that an object must have in order to be an "X". Again, as an example, anything that "ACTS LIKE" a light, should have a turnOn() method and a turnOff() method. The purpose of interfaces is to allow the computer to enforce these properties and to know that an object of TYPE T must have functions called X,Y,Z, etc. \cite{utah}
+An interface is a blueprint for an object and what it is capable of. In Object Oriented Programming, an Interface is a description of all functions that an object must have in order to be an "X". Again, as an example, anything that "ACTS LIKE" a light, should have a turnOn() method and a turnOff() method. The purpose of interfaces is to allow the computer to enforce these properties and to know that an object of TYPE T must have functions called X,Y,Z, etc. \cite{utah}
 
 
 \section{ISP}
 
 \begin{center} 
- ``Clients should not be forced to depend upon interfaces that they do not use.''\newline
+ ``Clients should not be forced to depend upon interfaces that they do not use.''\cite{ISP}\newline
 \end{center} 
 
 This principle was developed by Robert C. Martin while working at Xerox as a consultant. Martin was in charge of developing a new printing management system that could carry out tasks concurrently, which was new by the time.\cite{solidISP}
@@ -82,9 +82,7 @@ This principle is simple and clear, interfaces should not be forced to implement
 
 
 \section{Problem with will be solved with the ISP}
-
-Deliver big fat interface that forces the client to implement a method that is not required.
-The client ends up implementing a usefulness method, in other words a method that has no meaning to the client. This decreases the readability of the code and also confuses the developer using the client code.
+With ISP you can prevent overloaded interfaces that forces the client to implement a method that is not required. The client ends up implementing a usefulness method, in other words a method that has no meaning to the client. This decreases the readability of the code and also confuses the developer using the client code.
 The client interface ends up violating SRP sometime since it might perform some action that is not related to it.\cite{csharpsolid}
 
 
