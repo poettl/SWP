@@ -1,0 +1,27 @@
+<h1>05_Mediator_Observer</h1>
+<div class="main-container">
+  <mat-selection-list
+    multiple
+    (selectionChange)="listSelectionChanged($event)"
+    [(ngModel)]="selectedItems"
+  >
+    <mat-list-option
+      name="list-item"
+      ngDefaultControl
+      *ngFor="let count of [1, 2, 3, 4, 5, 6, 7]"
+    >
+      Item{{ count }}
+    </mat-list-option>
+  </mat-selection-list>
+  <div class="button-container">
+    <button mat-stroked-button color="primary" [disabled]="itemsSelected !== 1">
+      Bearbeiten
+    </button>
+    <button mat-stroked-button color="primary" [disabled]="itemsSelected <= 1">
+      Löschen
+    </button>
+    <button mat-stroked-button color="primary" [disabled]="itemsSelected !== 0">
+      Feature 3
+    </button>
+  </div>
+</div>
