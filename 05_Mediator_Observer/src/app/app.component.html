@@ -14,13 +14,13 @@
     </mat-list-option>
   </mat-selection-list>
   <div class="button-container">
-    <button mat-stroked-button color="primary" [disabled]="itemsSelected !== 1">
+    <button mat-stroked-button [disabled]="button1Disabled" color="primary">
       Bearbeiten
     </button>
-    <button mat-stroked-button color="primary" [disabled]="itemsSelected <= 1">
+    <button mat-stroked-button [disabled]="button2Disabled" color="primary">
       Löschen
     </button>
-    <button mat-stroked-button color="primary" [disabled]="itemsSelected !== 0">
+    <button mat-stroked-button [disabled]="button3Disabled" color="primary">
       Feature 3
     </button>
   </div>

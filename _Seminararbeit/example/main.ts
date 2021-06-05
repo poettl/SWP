@@ -1,27 +1,33 @@
-interface Bird {
+interface BirdFly {
   fly(): void;
+}
+interface BirdWalk {
   walk(): void;
 }
-class Duck implements Bird {
+class Duck implements BirdFly, BirdWalk {
   fly() {
-    console.log('duck is flying');
     // Duck can fly
+    console.log('duck is flying');
   }
   walk() {
-    console.log('duck is walking');
     // Duck can walk
+    console.log('duck is walking');
   }
 }
-class Ostrich implements Bird {
-  fly() {
-    throw new Error('ostrich can not fly');
-    // Ostrich can not fly
-  }
+class Ostrich implements BirdWalk {
   walk() {
-    console.log('ostrich is walking');
     // Ostrich can walk
+    console.log('ostrich is walking');
   }
 }
+
+const o1 = new Ostrich();
+const d1 = new Duck();
+
+d1.walk();
+d1.fly();
+
+o1.walk();
 
 // interface BirdFly {
 //   fly(): void;
@@ -45,12 +51,3 @@ class Ostrich implements Bird {
 //     console.log('ostrich is walking');
 //   }
 // }
-
-const o1 = new Ostrich();
-const b1 = new Duck();
-
-b1.walk();
-b1.fly();
-
-o1.walk();
-o1.fly();

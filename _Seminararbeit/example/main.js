@@ -2,28 +2,29 @@ var Duck = /** @class */ (function () {
     function Duck() {
     }
     Duck.prototype.fly = function () {
-        console.log('duck is flying');
         // Duck can fly
+        console.log('duck is flying');
     };
     Duck.prototype.walk = function () {
-        console.log('duck is walking');
         // Duck can walk
+        console.log('duck is walking');
     };
     return Duck;
 }());
 var Ostrich = /** @class */ (function () {
     function Ostrich() {
     }
-    Ostrich.prototype.fly = function () {
-        throw new Error('ostrich can not fly');
-        // Ostrich can not fly
-    };
     Ostrich.prototype.walk = function () {
-        console.log('ostrich is walking');
         // Ostrich can walk
+        console.log('ostrich is walking');
     };
     return Ostrich;
 }());
+var o1 = new Ostrich();
+var d1 = new Duck();
+d1.walk();
+d1.fly();
+o1.walk();
 // interface BirdFly {
 //   fly(): void;
 // }
@@ -46,9 +47,3 @@ var Ostrich = /** @class */ (function () {
 //     console.log('ostrich is walking');
 //   }
 // }
-var o1 = new Ostrich();
-var b1 = new Duck();
-b1.walk();
-b1.fly();
-o1.walk();
-o1.fly();

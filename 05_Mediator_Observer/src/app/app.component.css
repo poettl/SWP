@@ -16,3 +16,7 @@
 button {
   margin: 4px 0;
 }
+
+:host {
+  user-select: none;
+}
