@@ -19,4 +19,5 @@ button {
 
 :host {
   user-select: none;
+  padding: 500px;
 }

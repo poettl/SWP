@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Mediator } from './mediator.service';
+import { Mediator } from './mediator';
 
 @Component({
   selector: 'app-root',
@@ -15,17 +15,14 @@ export class AppComponent implements OnInit {
   constructor() {
     this.mediator.addObserver('listCount', () => {
       const value = this.mediator.getValue('listCount');
+      this.button1Disabled = true;
+      this.button2Disabled = true;
+      this.button3Disabled = true;
       if (value === 1) {
         this.button1Disabled = false;
-        this.button2Disabled = true;
-        this.button3Disabled = true;
       } else if (value >= 1) {
-        this.button1Disabled = true;
         this.button2Disabled = false;
-        this.button3Disabled = true;
       } else if (value === 0) {
-        this.button1Disabled = true;
-        this.button2Disabled = true;
         this.button3Disabled = false;
       }
     });
@@ -34,7 +31,7 @@ export class AppComponent implements OnInit {
     this.mediator.setValue('listCount', 0);
   }
 
-  listSelectionChanged(event: any) {
+  listSelectionChanged() {
     this.mediator.setValue('listCount', this.selectedItems?.length);
   }
 }
